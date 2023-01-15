@@ -1,4 +1,4 @@
 INSERT INTO users
-VALUES(null, 'ana', '64644', 'ana@ana');
+VALUES(null, 'ana', 'maria', 'ana@ana', '1');
 INSERT INTO users
-VALUES(null, 'maria', '64644', 'ana@ana');
+VALUES(null, 'maria', 'maria', 'ana@ana', '1');

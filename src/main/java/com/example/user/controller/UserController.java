@@ -5,26 +5,52 @@ import lombok.RequiredArgsConstructor;
 import com.example.user.dto.OrderDto;
 import com.example.user.service.OrderServiceProxy;
 import com.example.user.service.UserService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(value = "/users")
 @Validated
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
     private final OrderServiceProxy orderServiceProxy;
 
-    @GetMapping("/orders/{orderId}")
+    @GetMapping("/submit-form")
+    public String createForm(Model model) {
+
+        model.addAttribute("formSubmit", new OrderRequestDto());
+        return "submit-form";
+    }
+
+    @PostMapping("/createOrder")
+    public String createFormSubmission(@ModelAttribute OrderRequestDto formSubmit)
+    {
+        orderServiceProxy.createOrder(formSubmit);
+        return "results";
+    }
+    @GetMapping("/getOrder/{orderId}")
     public OrderDto getOrderById(@PathVariable Long orderId){
         return orderServiceProxy.getOrderById(orderId);
     }
 
-    @PostMapping
-    public OrderDto createOrder(@RequestBody @Valid OrderRequestDto dto){
-        return orderServiceProxy.createOrder(dto);
-    }
+//    @PostMapping("/createOrder")
+//    public OrderDto createOrder(@RequestBody @Valid OrderRequestDto dto){
+//        return orderServiceProxy.createOrder(dto);
+//    }
+
+    @PutMapping("/updateOrder/{orderId}")
+    public OrderDto updateOrder(@RequestBody @Valid OrderRequestDto dto, @PathVariable Long orderId){return orderServiceProxy.updateOrder(orderId, dto);}
+
+    @GetMapping("/myOrders")
+    public List<OrderDto> getOrders(){ return orderServiceProxy.getAllOrders();}
+
+    @DeleteMapping("/deleteOrder/{orderId}")
+    public ResponseEntity<?> deleteOrderById(@PathVariable Long orderId){ return orderServiceProxy.deleteOrder(orderId);}
+
 }

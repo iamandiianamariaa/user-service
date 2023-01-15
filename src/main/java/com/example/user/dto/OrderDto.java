@@ -2,8 +2,10 @@ package com.example.user.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -16,7 +18,8 @@ public class OrderDto {
     private String receiverPhone;
     private Integer parcelNumber;
     private Double cost;
-    private LocalDateTime pickupDate;
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private Date pickupDate;
     private String senderCity;
     private String senderCounty;
     private String senderCountry;

@@ -13,6 +13,8 @@
 <body>
 <div class="container my-5">
     <h3> Submit your information</h3>
+
+    <div th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger"></div>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">

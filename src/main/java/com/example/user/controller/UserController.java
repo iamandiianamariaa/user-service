@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -29,9 +31,13 @@ public class UserController {
     }
 
     @PostMapping("/createOrder")
-    public String createFormSubmission(@ModelAttribute OrderRequestDto formSubmit)
+    public String createFormSubmission(@ModelAttribute OrderRequestDto formSubmit, RedirectAttributes redirectAttributes)
     {
-        orderServiceProxy.createOrder(formSubmit);
+        if(orderServiceProxy.createOrder(formSubmit).isEmpty()){
+            redirectAttributes.addFlashAttribute("errorMessage", "No courier available in your region.");
+            return "redirect:/users/submit-form";
+        }
+
         return "results";
     }
     @GetMapping("/getOrder/{orderId}")

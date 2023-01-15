@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @FeignClient(value = "order-service", url = "http://order:8080/orders")
 public interface OrderServiceProxy {
@@ -18,7 +19,7 @@ public interface OrderServiceProxy {
     List<OrderDto> getAllOrders();
 
     @PostMapping
-    OrderDto createOrder(@RequestBody @Valid OrderRequestDto dto);
+    Optional<OrderDto> createOrder(@RequestBody @Valid OrderRequestDto dto);
 
     @PutMapping(value = "/{orderId}")
     OrderDto updateOrder(@PathVariable Long orderId, @RequestBody @Valid OrderRequestDto dto);

@@ -16,7 +16,7 @@ public interface OrderServiceProxy {
     OrderDto getOrderById(@PathVariable Long orderId);
 
     @GetMapping
-    List<OrderDto> getAllOrders();
+    List<OrderDto> getAllOrders(@RequestParam("username") String username);
 
     @PostMapping
     Optional<OrderDto> createOrder(@RequestBody @Valid OrderRequestDto dto);

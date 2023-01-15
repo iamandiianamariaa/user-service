@@ -8,11 +8,11 @@
 
     <link rel="stylesheet" type="text/css"
           th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
-<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">-->
-    <title>Home page</title>
+
+    <title>My orders</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,20 +28,30 @@
     </div>
 </nav>
 
-<br>
-<br>
-<div class="container">
-    <h2>Home Page</h2>
 
-    <h3>
-        Welcome <span th:text="${#authentication.getPrincipal().getUsername()}"></span>! To get started, you can place a courier order.
-    </h3>
-    <div class="btn-group" role="group">
-    <a class="form-control btn btn-primary mr-1" th:href="@{/users/submit-form}">Place an order</a>
-        <div class="box"></div>
-    <a class="form-control btn btn-primary" th:href="@{/users/myOrders}">See my orders</a>
-    </div>
-</div>
+<tr th:each="order : ${orders}">
+    <td>
+        <div class="card">
+            <div class="card-header">
+                <span th:text="'Order id ' + ${order.id}"></span>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><span th:text="${order.pickupDate}"></span></h5>
+                <p class="card-text"><span th:text="'Receiver name: ' + ${order.receiverName}"></span></p>
+                <p class="card-text"><span th:text="'Receiver city: ' + ${order.receiverCity}"></span></p>
+                <p class="card-text"><span th:text="'Receiver county: ' + ${order.receiverCounty}"></span></p>
+                <p class="card-text"><span th:text="'Receiver country: ' + ${order.receiverCountry}"></span></p>
+                <div class="btn-group" role="group">
+                    <a class="form-control btn btn-primary mr-1" th:href="@{/users/deleteOrder}">Cancel order</a>
+                    <div class="box"></div>
+                    <a class="form-control btn btn-primary" th:href="@{/users/updateOrder}">Update order</a>
+                </div>
+            </div>
+        </div>
+    </td>
+    <td></td>
+</tr>
+
 
 <script type="text/javascript"
         th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>

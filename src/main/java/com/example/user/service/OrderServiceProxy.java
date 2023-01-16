@@ -21,9 +21,9 @@ public interface OrderServiceProxy {
     @PostMapping
     Optional<OrderDto> createOrder(@RequestBody @Valid OrderRequestDto dto);
 
-    @PutMapping(value = "/{orderId}")
+    @PutMapping("/{orderId}")
     OrderDto updateOrder(@PathVariable Long orderId, @RequestBody @Valid OrderRequestDto dto);
 
-    @DeleteMapping(value = "/{orderId}")
-    ResponseEntity<?> deleteOrder(@PathVariable Long orderId);
+    @DeleteMapping("/{orderId}")
+    void deleteOrder(@PathVariable Long orderId);
 }

@@ -1,6 +1,7 @@
 package com.example.user.controller;
 
 import com.example.user.dto.OrderRequestDto;
+import com.example.user.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import com.example.user.dto.OrderDto;
 import com.example.user.service.OrderServiceProxy;
@@ -21,6 +22,7 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 public class UserController {
     private final OrderServiceProxy orderServiceProxy;
+    private final OrderMapper orderMapper;
     static Logger logger = Logger.getLogger(UserController.class.getName());
 
     @GetMapping("/submit-form")
@@ -46,8 +48,23 @@ public class UserController {
         return orderServiceProxy.getOrderById(orderId);
     }
 
-    @PutMapping("/updateOrder/{orderId}")
-    public OrderDto updateOrder(@RequestBody @Valid OrderRequestDto dto, @PathVariable Long orderId){return orderServiceProxy.updateOrder(orderId, dto);}
+    @GetMapping("/updateOrder/{orderId}")
+    public String updateForm(Model model, @PathVariable String orderId) {
+        logger.info(orderId);
+        OrderDto order = orderServiceProxy.getOrderById(Long.valueOf(orderId));
+
+        model.addAttribute("formSubmit", order);
+        return "submit-form-update";
+    }
+
+    @PutMapping("/update")
+    public String updateOrder(@ModelAttribute OrderDto orderDto){
+        logger.info(orderDto.getReceiverAddress());
+        logger.info("ceva " + orderDto.getId());
+        orderServiceProxy.updateOrder(orderDto.getId(),orderMapper.maptoRequestDto(orderDto));
+
+        return "redirect:/users/myOrders";
+    }
 
     @GetMapping("/myOrders")
     public String getOrders(Model model){
@@ -55,7 +72,11 @@ public class UserController {
         return "orders";
     }
 
-    @DeleteMapping("/deleteOrder/{orderId}")
-    public ResponseEntity<?> deleteOrderById(@PathVariable Long orderId){ return orderServiceProxy.deleteOrder(orderId);}
+    @GetMapping("/deleteOrder/{orderId}")
+    public String deleteOrderById(@PathVariable Long orderId){
+        logger.info("lala " + orderId);
+        orderServiceProxy.deleteOrder(orderId);
+        return "redirect:/users/myOrders";
+    }
 
 }

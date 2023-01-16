@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Place Order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">-->
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#" th:href="@{/}">Courier Service</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container my-5">
+    <h3> Submit your information</h3>
+
+    <div th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger"></div>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{/users/update}" th:object="${formSubmit}"
+                      th:method="put">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <input type="hidden" th:field="*{id}" class="form-control"
+                                   id="id" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="senderName" class="col-form-label">Sender Name</label>
+                            <input type="text" th:field="*{senderName}" class="form-control"
+                                   id="senderName" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="senderPhone" class="col-form-label">Sender Phone</label>
+                            <input type="text" th:field="*{senderPhone}" class="form-control"
+                                   id="senderPhone" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="receiverName" class="col-form-label">Receiver Name</label>
+                            <input type="text" th:field="*{receiverName}" class="form-control"
+                                   id="receiverName" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="receiverPhone" class="col-form-label">Receiver Phone</label>
+                            <input type="text" th:field="*{receiverPhone}" class="form-control"
+                                   id="receiverPhone"/>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="number" class="col-form-label">Number of parcels</label>
+                            <input type="number" th:field="*{parcelNumber}" class="form-control"
+                                   id="number" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="date" class="col-form-label">Pick up date</label>
+                            <input type="date" th:field="*{pickupDate}" class="form-control"
+                                   id="date"/>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="senderCity" class="col-form-label">Sender city</label>
+                            <input type="text" th:field="*{senderCity}" class="form-control"
+                                   id="senderCity" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="senderCounty" class="col-form-label">Sender county</label>
+                            <input type="text" th:field="*{senderCounty}" class="form-control"
+                                   id="senderCounty"/>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="senderCountry" class="col-form-label">Sender country</label>
+                            <input type="text" th:field="*{senderCountry}" class="form-control"
+                                   id="senderCountry"/>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="senderAddress" class="col-form-label">Sender address</label>
+                            <input type="text" th:field="*{senderAddress}" class="form-control"
+                                   id="senderAddress" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="receiverCity" class="col-form-label">Receiver city</label>
+                            <input type="text" th:field="*{receiverCity}" class="form-control"
+                                   id="receiverCity" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="receiverCounty" class="col-form-label">Receiver county</label>
+                            <input type="text" th:field="*{receiverCounty}" class="form-control"
+                                   id="receiverCounty" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="receiverCountry" class="col-form-label">Receiver country</label>
+                            <input type="text" th:field="*{receiverCountry}" class="form-control"
+                                   id="receiverCountry" />
+                        </div>
+
+
+                        <div class="form-group col-md-8">
+                            <label for="receiverAddress" class="col-form-label">Receiver address</label>
+                            <input type="text" th:field="*{receiverAddress}" class="form-control"
+                                   id="receiverAddress"/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value=" Submit ">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript"
+        th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

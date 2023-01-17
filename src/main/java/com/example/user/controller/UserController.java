@@ -48,7 +48,6 @@ public class UserController {
 
     @GetMapping("/updateOrder/{orderId}")
     public String updateForm(Model model, @PathVariable String orderId) {
-        logger.info(orderId);
         OrderDto order = orderServiceProxy.getOrderById(Long.valueOf(orderId));
 
         model.addAttribute("formSubmit", order);
@@ -56,10 +55,13 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public String updateOrder(@ModelAttribute OrderDto orderDto) {
-        logger.info(orderDto.getReceiverAddress());
-        logger.info("ceva " + orderDto.getId());
-        orderServiceProxy.updateOrder(orderDto.getId(), orderMapper.mapToRequestDto(orderDto));
+    public String updateOrder(@ModelAttribute OrderDto orderDto, RedirectAttributes redirectAttributes) {
+        if (orderServiceProxy.updateOrder(orderDto.getId(), orderMapper.mapToRequestDto(orderDto)).isEmpty()) {
+            logger.info("is empty");
+            redirectAttributes.addFlashAttribute("errorMessage", "No courier available in your region after updating order.");
+            return "redirect:/users/updateOrder/" + orderDto.getId();
+        }
+        logger.info("not");
 
         return "redirect:/users/myOrders";
     }

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" type="text/css"
-          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}"/>
 
     <title>My orders</title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -42,9 +43,11 @@
                 <p class="card-text"><span th:text="'Receiver county: ' + ${order.receiverCounty}"></span></p>
                 <p class="card-text"><span th:text="'Receiver country: ' + ${order.receiverCountry}"></span></p>
                 <div class="btn-group" role="group">
-                    <a class="form-control btn btn-primary mr-1" th:href="@{|/users/deleteOrder/${order.id}|}">Cancel order</a>
+                    <a class="form-control btn btn-primary mr-1" th:href="@{|/users/deleteOrder/${order.id}|}">Cancel
+                        order</a>
                     <div class="box"></div>
-                    <a class="form-control btn btn-primary" th:href="@{|/users/updateOrder/${order.id}|}">Update order</a>
+                    <a class="form-control btn btn-primary" th:href="@{|/users/updateOrder/${order.id}|}">Update
+                        order</a>
                 </div>
             </div>
         </div>

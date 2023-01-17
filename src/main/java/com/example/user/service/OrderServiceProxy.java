@@ -3,7 +3,6 @@ package com.example.user.service;
 import com.example.user.dto.OrderRequestDto;
 import com.example.user.dto.OrderDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

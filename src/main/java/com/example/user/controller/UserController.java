@@ -5,7 +5,6 @@ import com.example.user.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import com.example.user.dto.OrderDto;
 import com.example.user.service.OrderServiceProxy;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.logging.Logger;
 
 @Controller
@@ -33,18 +31,18 @@ public class UserController {
     }
 
     @PostMapping("/createOrder")
-    public String createFormSubmission(@ModelAttribute OrderRequestDto formSubmit, RedirectAttributes redirectAttributes)
-    {
+    public String createFormSubmission(@ModelAttribute OrderRequestDto formSubmit, RedirectAttributes redirectAttributes) {
         formSubmit.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        if(orderServiceProxy.createOrder(formSubmit).isEmpty()){
+        if (orderServiceProxy.createOrder(formSubmit).isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "No courier available in your region.");
             return "redirect:/users/submit-form";
         }
 
         return "order-confirmation";
     }
+
     @GetMapping("/getOrder/{orderId}")
-    public OrderDto getOrderById(@PathVariable Long orderId){
+    public OrderDto getOrderById(@PathVariable Long orderId) {
         return orderServiceProxy.getOrderById(orderId);
     }
 
@@ -58,22 +56,22 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public String updateOrder(@ModelAttribute OrderDto orderDto){
+    public String updateOrder(@ModelAttribute OrderDto orderDto) {
         logger.info(orderDto.getReceiverAddress());
         logger.info("ceva " + orderDto.getId());
-        orderServiceProxy.updateOrder(orderDto.getId(),orderMapper.maptoRequestDto(orderDto));
+        orderServiceProxy.updateOrder(orderDto.getId(), orderMapper.mapToRequestDto(orderDto));
 
         return "redirect:/users/myOrders";
     }
 
     @GetMapping("/myOrders")
-    public String getOrders(Model model){
+    public String getOrders(Model model) {
         model.addAttribute("orders", orderServiceProxy.getAllOrders(SecurityContextHolder.getContext().getAuthentication().getName()));
         return "orders";
     }
 
     @GetMapping("/deleteOrder/{orderId}")
-    public String deleteOrderById(@PathVariable Long orderId){
+    public String deleteOrderById(@PathVariable Long orderId) {
         logger.info("lala " + orderId);
         orderServiceProxy.deleteOrder(orderId);
         return "redirect:/users/myOrders";

@@ -6,16 +6,15 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Place Order</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
-<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">-->
 
     <link rel="stylesheet" type="text/css"
-          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}"/>
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -41,82 +40,82 @@
                         <div class="form-group col-md-8">
                             <label for="senderName" class="col-form-label">Sender Name</label>
                             <input type="text" th:field="*{senderName}" class="form-control"
-                                   id="senderName" placeholder="Sender Name" />
+                                   id="senderName" placeholder="Sender Name"/>
                         </div>
                         <div class="form-group col-md-8">
                             <label for="senderPhone" class="col-form-label">Sender Phone</label>
                             <input type="text" th:field="*{senderPhone}" class="form-control"
-                                   id="senderPhone" placeholder="Sender phone" />
+                                   id="senderPhone" placeholder="Sender phone"/>
                         </div>
                         <div class="form-group col-md-8">
                             <label for="receiverName" class="col-form-label">Receiver Name</label>
                             <input type="text" th:field="*{receiverName}" class="form-control"
-                                   id="receiverName" placeholder="Receiver Name" />
+                                   id="receiverName" placeholder="Receiver Name"/>
                         </div>
                         <div class="form-group col-md-8">
                             <label for="receiverPhone" class="col-form-label">Receiver Phone</label>
                             <input type="text" th:field="*{receiverPhone}" class="form-control"
-                                   id="receiverPhone" placeholder="Receiver phone" />
+                                   id="receiverPhone" placeholder="Receiver phone"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="number" class="col-form-label">Number of parcels</label>
                             <input type="number" th:field="*{parcelNumber}" class="form-control"
-                                   id="number" placeholder="Number of parcels" />
+                                   id="number" placeholder="Number of parcels"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="date" class="col-form-label">Pick up date</label>
                             <input type="date" th:field="*{pickupDate}" class="form-control"
-                                   id="date" placeholder="Pick up date" />
+                                   id="date" placeholder="Pick up date"/>
                         </div>
                         <div class="form-group col-md-8">
                             <label for="senderCity" class="col-form-label">Sender city</label>
                             <input type="text" th:field="*{senderCity}" class="form-control"
-                                   id="senderCity" placeholder="Sender city" />
+                                   id="senderCity" placeholder="Sender city"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="senderCounty" class="col-form-label">Sender county</label>
                             <input type="text" th:field="*{senderCounty}" class="form-control"
-                                   id="senderCounty" placeholder="Sender county" />
+                                   id="senderCounty" placeholder="Sender county"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="senderCountry" class="col-form-label">Sender country</label>
                             <input type="text" th:field="*{senderCountry}" class="form-control"
-                                   id="senderCountry" placeholder="Sender country" />
+                                   id="senderCountry" placeholder="Sender country"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="senderAddress" class="col-form-label">Sender address</label>
                             <input type="text" th:field="*{senderAddress}" class="form-control"
-                                   id="senderAddress" placeholder="Sender address" />
+                                   id="senderAddress" placeholder="Sender address"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="receiverCity" class="col-form-label">Receiver city</label>
                             <input type="text" th:field="*{receiverCity}" class="form-control"
-                                   id="receiverCity" placeholder="Receiver city" />
+                                   id="receiverCity" placeholder="Receiver city"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="receiverCounty" class="col-form-label">Receiver county</label>
                             <input type="text" th:field="*{receiverCounty}" class="form-control"
-                                   id="receiverCounty" placeholder="Receiver county" />
+                                   id="receiverCounty" placeholder="Receiver county"/>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="receiverCountry" class="col-form-label">Receiver country</label>
                             <input type="text" th:field="*{receiverCountry}" class="form-control"
-                                   id="receiverCountry" placeholder="Receiver country" />
+                                   id="receiverCountry" placeholder="Receiver country"/>
                         </div>
 
 
                         <div class="form-group col-md-8">
                             <label for="receiverAddress" class="col-form-label">Receiver address</label>
                             <input type="text" th:field="*{receiverAddress}" class="form-control"
-                                   id="receiverAddress" placeholder="Receiver address" />
+                                   id="receiverAddress" placeholder="Receiver address"/>
                         </div>
 
                         <div class="col-md-6">

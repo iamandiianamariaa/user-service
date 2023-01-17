@@ -2,19 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" type="text/css"
-          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
-<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">-->
+          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}"/>
     <title>Home page</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -34,12 +33,13 @@
     <h2>Home Page</h2>
 
     <h3>
-        Welcome <span th:text="${#authentication.getPrincipal().getUsername()}"></span>! To get started, you can place a courier order.
+        Welcome <span th:text="${#authentication.getPrincipal().getUsername()}"></span>! To get started, you can place a
+        courier order.
     </h3>
     <div class="btn-group" role="group">
-    <a class="form-control btn btn-primary mr-1" th:href="@{/users/submit-form}">Place an order</a>
+        <a class="form-control btn btn-primary mr-1" th:href="@{/users/submit-form}">Place an order</a>
         <div class="box"></div>
-    <a class="form-control btn btn-primary" th:href="@{/users/myOrders}">See my orders</a>
+        <a class="form-control btn btn-primary" th:href="@{/users/myOrders}">See my orders</a>
     </div>
 </div>
 

@@ -8,5 +8,5 @@ import org.mapstruct.*;
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         unmappedTargetPolicy = ReportingPolicy.WARN)
 public interface OrderMapper {
-    OrderRequestDto maptoRequestDto(OrderDto orderDto);
+    OrderRequestDto mapToRequestDto(OrderDto orderDto);
 }

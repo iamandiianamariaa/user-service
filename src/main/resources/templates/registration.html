@@ -91,16 +91,6 @@
                        th:each="error : ${#fields.errors('confirmPassword')}"
                        th:text="${error}">Validation error</p>
                 </div>
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
-                    <input id="terms" type="checkbox" th:field="*{terms}"/>   <label
-                        class="control-label" for="terms"> I agree with the <a
-                        href="#">terms and conditions</a> for Registration.
-                </label>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation
-                        error</p>
-                </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Register</button>
                     <span>Already registered? <a href="/" th:href="@{/login}">Login

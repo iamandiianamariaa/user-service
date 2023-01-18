@@ -29,7 +29,4 @@ public class UserRegistrationDto {
     @Email
     @NotEmpty
     private String confirmEmail;
-
-    @AssertTrue
-    private Boolean terms;
 }

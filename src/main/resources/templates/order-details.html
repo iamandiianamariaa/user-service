@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}"/>
+
+    <title>My order</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#" th:href="@{/}">Courier Service</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="card">
+    <div class="card-header">
+        <span th:text="'Order id ' + ${order.id}"></span>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><span th:text="${order.pickupDate}"></span></h5>
+        <p class="card-text"><span th:text="'Parcel number: ' + ${order.parcelNumber}"></span></p>
+        <p class="card-text"><span th:text="'Sender name: ' + ${order.senderName}"></span></p>
+        <p class="card-text"><span th:text="'Sender city: ' + ${order.senderCity}"></span></p>
+        <p class="card-text"><span th:text="'Sender county: ' + ${order.senderCounty}"></span></p>
+        <p class="card-text"><span th:text="'Sender country: ' + ${order.senderCountry}"></span></p>
+        <p class="card-text"><span th:text="'Sender address: ' + ${order.senderAddress}"></span></p>
+        <p class="card-text"><span th:text="'Sender phone: ' + ${order.senderPhone}"></span></p>
+        <p class="card-text"><span th:text="'Receiver name: ' + ${order.receiverName}"></span></p>
+        <p class="card-text"><span th:text="'Receiver city: ' + ${order.receiverCity}"></span></p>
+        <p class="card-text"><span th:text="'Receiver county: ' + ${order.receiverCounty}"></span></p>
+        <p class="card-text"><span th:text="'Receiver country: ' + ${order.receiverCountry}"></span></p>
+        <p class="card-text"><span th:text="'Receiver address: ' + ${order.receiverAddress}"></span></p>
+        <div class="btn-group" role="group">
+            <a class="form-control btn btn-primary btn-lg" th:href="@{/users/myOrders}">Back</a>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript"
+        th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript"
+        th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

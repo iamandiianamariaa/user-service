@@ -27,7 +27,7 @@ public class UserController {
     public String createForm(Model model) {
 
         model.addAttribute("formSubmit", new OrderRequestDto());
-        return "submit-form";
+        return "create-order-form";
     }
 
     @PostMapping("/createOrder")
@@ -42,8 +42,9 @@ public class UserController {
     }
 
     @GetMapping("/getOrder/{orderId}")
-    public OrderDto getOrderById(@PathVariable Long orderId) {
-        return orderServiceProxy.getOrderById(orderId);
+    public String getOrderById(Model model, @PathVariable Long orderId) {
+        model.addAttribute("order", orderServiceProxy.getOrderById(orderId));
+        return "order-details";
     }
 
     @GetMapping("/updateOrder/{orderId}")
@@ -51,7 +52,7 @@ public class UserController {
         OrderDto order = orderServiceProxy.getOrderById(Long.valueOf(orderId));
 
         model.addAttribute("formSubmit", order);
-        return "submit-form-update";
+        return "update-order-form";
     }
 
     @PutMapping("/update")

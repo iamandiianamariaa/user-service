@@ -43,11 +43,12 @@
                 <p class="card-text"><span th:text="'Receiver county: ' + ${order.receiverCounty}"></span></p>
                 <p class="card-text"><span th:text="'Receiver country: ' + ${order.receiverCountry}"></span></p>
                 <div class="btn-group" role="group">
-                    <a class="form-control btn btn-primary mr-1" th:href="@{|/users/deleteOrder/${order.id}|}">Cancel
+                    <a class="form-control btn btn-primary btn-lg mr-1" th:href="@{|/users/deleteOrder/${order.id}|}">Cancel
                         order</a>
                     <div class="box"></div>
-                    <a class="form-control btn btn-primary" th:href="@{|/users/updateOrder/${order.id}|}">Update
-                        order</a>
+                    <a class="form-control btn btn-primary btn-lg mr-1" th:href="@{|/users/updateOrder/${order.id}|}">Update order</a>
+                    <div class="box"></div>
+                    <a class="form-control btn btn-primary btn-lg" th:href="@{|/users/getOrder/${order.id}|}">Get info</a>
                 </div>
             </div>
         </div>

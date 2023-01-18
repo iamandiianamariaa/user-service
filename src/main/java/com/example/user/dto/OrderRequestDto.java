@@ -16,7 +16,6 @@ public class OrderRequestDto {
     private String receiverName;
     private String receiverPhone;
     private Integer parcelNumber;
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date pickupDate;
 

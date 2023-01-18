@@ -12,8 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.logging.Logger;
-
 @Controller
 @RequestMapping(value = "/users")
 @Validated
@@ -21,7 +19,6 @@ import java.util.logging.Logger;
 public class UserController {
     private final OrderServiceProxy orderServiceProxy;
     private final OrderMapper orderMapper;
-    static Logger logger = Logger.getLogger(UserController.class.getName());
 
     @GetMapping("/submit-form")
     public String createForm(Model model) {
@@ -58,11 +55,9 @@ public class UserController {
     @PutMapping("/update")
     public String updateOrder(@ModelAttribute OrderDto orderDto, RedirectAttributes redirectAttributes) {
         if (orderServiceProxy.updateOrder(orderDto.getId(), orderMapper.mapToRequestDto(orderDto)).isEmpty()) {
-            logger.info("is empty");
             redirectAttributes.addFlashAttribute("errorMessage", "No courier available in your region after updating order.");
             return "redirect:/users/updateOrder/" + orderDto.getId();
         }
-        logger.info("not");
 
         return "redirect:/users/myOrders";
     }
@@ -75,7 +70,6 @@ public class UserController {
 
     @GetMapping("/deleteOrder/{orderId}")
     public String deleteOrderById(@PathVariable Long orderId) {
-        logger.info("lala " + orderId);
         orderServiceProxy.deleteOrder(orderId);
         return "redirect:/users/myOrders";
     }
